@@ -1,0 +1,9 @@
+.idea
+*.pyc
+*.pid
+*.log
+/venv/
+uploads/
+tasks/local.py
+dump.rdb
+staticfiles/admin
