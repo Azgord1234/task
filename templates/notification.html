@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Уведомление</title>
+</head>
+<body>
+    <div>
+        <p>Уведомление о начале события</p>
+        <p>Заголовок: {{ title }}</p>
+        <p>Описание: {{ description }}</p>
+        <p>Дата проведения: {{ time_spend_task|date:'%Y-%m-%d'}}</p>
+        <p>Время проведения: {{ time_spend_task|time:'%H-%i'}}</p>
+        <p>id записи: {{ id }}</p>
+    </div>
+</body>
+</html>
