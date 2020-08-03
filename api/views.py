@@ -13,7 +13,7 @@ from api.serializers import TasksListSerializer
 
 
 class TaskList(generics.ListAPIView):
-    queryset = TasksList.objects.all()
+    queryset = TasksList.objects.all().order_by('time_spend_task')
     serializer_class = TasksListSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['title']
@@ -38,10 +38,10 @@ class TaskList(generics.ListAPIView):
 class CreateTask(APIView):
 
     def post(self, request, *args, **kwargs):
-        data = json.loads(self.request.data)
+        data = self.request.data
         title = data.get('title', None)
         description = data.get('description', None)
-        date_time = data.get('date_time', None)
+        date_time = data.get('time_spend_task', None)
         if title and description and date_time:
             try:
                 new_task = TasksList.objects.create(
@@ -66,11 +66,11 @@ class CreateTask(APIView):
 class UpdateTask(APIView):
 
     def put(self, request, *args, **kwargs):
-        data = json.loads(self.request.data)
+        data = self.request.data
         pk = data.get('id', None)
         title = data.get('title', None)
         description = data.get('description', None)
-        date_time = data.get('date_time', None)
+        date_time = data.get('time_spend_task', None)
         if pk and title and description and date_time:
             try:
                 task = TasksList.objects.get(pk=pk)
@@ -94,7 +94,7 @@ class UpdateTask(APIView):
 class DeleteTask(APIView):
 
     def delete(self, request, *args, **kwargs):
-        data = json.loads(self.request.data)
+        data = self.request.query_params
         pk = data.get('id', None)
         if pk:
             try:
