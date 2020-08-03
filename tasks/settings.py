@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'django_celery_beat',
+    'task_manager.apps.TaskManagerConfig',
 ]
 
 MIDDLEWARE = [
@@ -96,13 +97,13 @@ SESSION_ENGINE = 'redis_sessions.session'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
